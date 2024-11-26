@@ -1,0 +1,24 @@
+[project]
+name = 'syn-contract'
+description = ''
+authors = []
+telemetry = true
+cache_dir = '.\.cache'
+requirements = []
+[contracts.Referendum-Management]
+path = 'contracts/Referendum-Management.clar'
+clarity_version = 3
+epoch = 3.0
+
+[contracts.voting-system]
+path = 'contracts/voting-system.clar'
+clarity_version = 3
+epoch = 3.0
+[repl.analysis]
+passes = ['check_checker']
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
