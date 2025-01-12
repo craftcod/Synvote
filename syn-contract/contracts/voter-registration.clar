@@ -42,6 +42,7 @@
 (define-data-var contract-owner principal tx-sender)
 (define-data-var kyc-authority principal tx-sender)
 
+
 ;; Getters
 (define-read-only (get-voter-info (address principal))
     (map-get? voters { address: address }))
