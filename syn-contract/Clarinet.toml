@@ -5,6 +5,8 @@ authors = []
 telemetry = true
 cache_dir = '.\.cache'
 requirements = []
+[contracts.voting-contract]
+path = 'contracts/voting-contract.clar'
 [contracts.voter-registration]
 path = 'contracts/voter-registration.clar'
 [contracts.Referendum-Management]
