@@ -5,6 +5,11 @@ authors = []
 telemetry = true
 cache_dir = '.\.cache'
 requirements = []
+[contracts.Distributed-Contrac]
+path = 'contracts/Distributed-Contrac.clar'
+clarity_version = 3
+epoch = 3.0
+
 [contracts.Referendum-Management]
 path = 'contracts/Referendum-Management.clar'
 clarity_version = 3
