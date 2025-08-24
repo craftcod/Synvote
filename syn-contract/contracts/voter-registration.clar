@@ -75,7 +75,7 @@
             {
                 status: VOTER-ACTIVE,
                 kyc-verified: false,
-                registration-time: stacks-block-height,
+                registration-time: block-height,
                 last-vote-time: none,
                 did: did
             }))))
@@ -139,7 +139,7 @@
             (map-set voters
                 { address: tx-sender }
                 (merge (unwrap! voter-info ERR-NOT-REGISTERED)
-                    { last-vote-time: (some stacks-block-height) }))
+                    { last-vote-time: (some block-height) }))
             (ok true))))
 
 ;; Administrative functions

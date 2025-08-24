@@ -1,4 +1,3 @@
-
 ;; title: voting-contract
 ;; version:
 ;; summary:
@@ -105,47 +104,7 @@
 
 ;; Admin functions
 
-;; End the referendum
-(define-public (end-referendum)
-  (begin
-    ;; Only contract owner can end the referendum
-    (asserts! (is-eq tx-sender contract-owner) (err ERR-NOT-AUTHORIZED))
-    
-    ;; Ensure referendum is still active
-    (asserts! (var-get referendum-active) (err ERR-REFERENDUM-ENDED))
-    
-    ;; End the referendum
-    (var-set referendum-active false)
-    (var-set referendum-ended true)
-    
-    ;; Generate result hash for authentication
-    (let (
-      (yes (var-get yes-votes))
-      (no (var-get no-votes))
-      (total (+ yes no))
-      (timestamp stacks-block-height)
-    )
-      ;; Use hash160 directly with the concatenated buffer of values
-      (var-set result-hash (some (hash160 
-        (concat 
-          (unwrap-panic (to-consensus-buff? yes))
-          (concat
-            (unwrap-panic (to-consensus-buff? no))
-            (unwrap-panic (to-consensus-buff? timestamp)))))))
-      
-      ;; Log the end of referendum for off-chain tracking
-      (print {
-        event: "referendum-ended",
-        yes-votes: yes,
-        no-votes: no,
-        total-votes: total,
-        block-height: timestamp
-      })
-      
-      (ok true)
-    )
-  )
-)
+
 
 ;; Set passing threshold (percentage of yes votes needed)
 (define-public (set-threshold (new-threshold int))
